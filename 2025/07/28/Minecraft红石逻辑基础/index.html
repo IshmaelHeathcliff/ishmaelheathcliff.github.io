@@ -70,7 +70,119 @@
 		</script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 	
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -237,9 +349,9 @@
 <h2 id="进阶结构"><a href="#进阶结构" class="headerlink" title="进阶结构"></a>进阶结构</h2><h3 id="锁存器与触发器"><a href="#锁存器与触发器" class="headerlink" title="锁存器与触发器"></a>锁存器与触发器</h3><p>锁存器（Latch）和触发器（Flip-Flop）为记忆电路，可存储输入信号，将短促信号转变为持续信号。锁存器为电平触发装置，检测信号状态（1 为高电平，0 为低电平）并储存。触发器为边沿触发装置，检测信号变化（边沿信号，0 变 1 为上边沿信号，1 变 0 为下边沿信号）从而触发状态改变。锁存器比触发器更简单和基础，锁存器可扩展为触发器。其中 RS 或非锁存器为基本单元，又称为 RS 基本触发器。</p>
 <h4 id="RS-锁存器（RS-或非锁定器，Reset-Set）"><a href="#RS-锁存器（RS-或非锁定器，Reset-Set）" class="headerlink" title="RS 锁存器（RS 或非锁定器，Reset-Set）"></a>RS 锁存器（RS 或非锁定器，Reset-Set）</h4><ul>
 <li>输入端 S 和 R</li>
-<li>输出端 Q 和 $\bar Q$</li>
-<li>S 输入 1 后，则 Q 为 1，$\bar Q$ 为 0</li>
-<li>R 输入 1 后，则 Q 为 0，$\bar Q$ 为 1</li>
+<li>输出端 Q 和 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.79ex" height="2.6ex" role="img" focusable="false" viewBox="0 -955 791 1149"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g><g data-mml-node="mo" transform="translate(478.8,265) translate(-250 0)"><path data-c="AF" d="M69 544V590H430V544H69Z"></path></g></g></g></g></g></svg></mjx-container></li>
+<li>S 输入 1 后，则 Q 为 1，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.79ex" height="2.6ex" role="img" focusable="false" viewBox="0 -955 791 1149"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g><g data-mml-node="mo" transform="translate(478.8,265) translate(-250 0)"><path data-c="AF" d="M69 544V590H430V544H69Z"></path></g></g></g></g></g></svg></mjx-container> 为 0</li>
+<li>R 输入 1 后，则 Q 为 0，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.79ex" height="2.6ex" role="img" focusable="false" viewBox="0 -955 791 1149"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g><g data-mml-node="mo" transform="translate(478.8,265) translate(-250 0)"><path data-c="AF" d="M69 544V590H430V544H69Z"></path></g></g></g></g></g></svg></mjx-container> 为 1</li>
 <li>禁止 S 和 R 同时输入 1</li>
 </ul>
 <p><img src="https://lawrence-picgo.oss-cn-beijing.aliyuncs.com/images/RS_NOR_latch.webp" alt="RS_NOR_latch.webp"></p>
@@ -261,7 +373,7 @@
 <h4 id="D-触发器（Data）"><a href="#D-触发器（Data）" class="headerlink" title="D 触发器（Data）"></a>D 触发器（Data）</h4><ul>
 <li>数据输入端 D 和时钟信号输入端 C</li>
 <li>信号强制端 SR</li>
-<li>输出端 Q 和 $\bar Q$</li>
+<li>输出端 Q 和 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.79ex" height="2.6ex" role="img" focusable="false" viewBox="0 -955 791 1149"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g><g data-mml-node="mo" transform="translate(478.8,265) translate(-250 0)"><path data-c="AF" d="M69 544V590H430V544H69Z"></path></g></g></g></g></g></svg></mjx-container></li>
 <li>C 端输入上边沿信号时，将 D 锁存到 Q</li>
 </ul>
 <h5 id="D-锁存器"><a href="#D-锁存器" class="headerlink" title="D 锁存器"></a>D 锁存器</h5><ul>
@@ -295,7 +407,7 @@
 <tr>
 <td>1</td>
 <td>1</td>
-<td>$\bar Q$ (t-1)</td>
+<td><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.79ex" height="2.6ex" role="img" focusable="false" viewBox="0 -955 791 1149"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g><g data-mml-node="mo" transform="translate(478.8,265) translate(-250 0)"><path data-c="AF" d="M69 544V590H430V544H69Z"></path></g></g></g></g></g></svg></mjx-container> (t-1)</td>
 </tr>
 </tbody></table>
 <h4 id="T-触发器（Toggle）"><a href="#T-触发器（Toggle）" class="headerlink" title="T 触发器（Toggle）"></a>T 触发器（Toggle）</h4><ul>

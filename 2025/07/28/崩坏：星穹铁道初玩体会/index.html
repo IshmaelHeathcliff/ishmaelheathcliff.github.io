@@ -68,7 +68,119 @@
 		</script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 	
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -182,8 +294,8 @@
 <li>武器突破材料</li>
 <li>技能升级材料</li>
 <li>技能高阶材料（周本Boss材料）</li>
-<li>角色突破&#x2F;晋阶材料</li>
-<li>圣遗物&#x2F;遗器</li>
+<li>角色突破/晋阶材料</li>
+<li>圣遗物/遗器</li>
 </ul>
 <p>原神的采集材料和怪物材料在崩铁中简化为了只有怪物材料。</p>
 <p>原神的武器突破材料和技能升级材料在崩铁中则统一为了命途材料。</p>
@@ -236,7 +348,7 @@
 <p>同时崩铁引入了效果命中和效果抵抗来调整 defuff 的命中和抵抗概率。</p>
 <p>关于击破特攻、持续伤害、debuff 等的作用机制，在进一步游玩后再做出详细分析。</p>
 <p>原神中的隐藏属性攻击速度在崩铁中则对应着速度。速度这个属性决定了战斗中行动的先后和行动的频率，由于崩铁为回合制游戏，多一次行动的收益将大得多，角色行动的前后顺序也会大大影响战斗过程，所有速度在崩铁的后期游戏中有着重要的地位。</p>
-<p>角色的行动间隔为<br>$10000&#x2F;速度$，当前的行动值为到下个行动的剩余数值，会根据速度、buff 和 debuff 等实时变化。</p>
+<p>角色的行动间隔为<br><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="11.312ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5000 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1000,0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1500,0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(2000,0)"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2500,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mi" transform="translate(3000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">速</text></g><g data-mml-node="mi" transform="translate(4000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">度</text></g></g></g></svg></mjx-container>，当前的行动值为到下个行动的剩余数值，会根据速度、buff 和 debuff 等实时变化。</p>
 <p>原神中武器包含攻击力和一个不同的主词条，崩铁中的光锥则为固定的生命值、防御力和攻击力，没有主词条。</p>
 <p>同时遗器的数量由 5 个增加到 6 个，可以拥有更多的词条，同时每个词条的数值稍有减少，且增加了速度、效果命中和效果抵抗三种词条。</p>
 <p><img src="https://lawrence-picgo.oss-cn-beijing.aliyuncs.com/images/%E5%B4%A9%E9%93%81%E8%AF%8D%E6%9D%A1.png" alt="崩铁词条.png"></p>

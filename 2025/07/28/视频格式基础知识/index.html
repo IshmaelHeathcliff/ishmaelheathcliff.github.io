@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="视频格式基础知识封装格式 封装格式 包含视频、音频、章节、字幕等 轨道 MKV与MP4 MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持 MP4兼容性好于MKV MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式 MP4权威机构研发，工业标准，代替MPG 过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG   视频格式 H.264(8b">
+    <meta name="description" content="视频格式基础知识封装格式 封装格式 包含视频、音频、章节、字幕等 轨道 MKV与MP4 MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持 MP4兼容性好于MKV MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式 MP4权威机构研发，工业标准，代替MPG 过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG   视频格式 H.264(8bit&#x2F;10bit)&#x3D;AVC&#x3D;AVC1 H.265(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="视频格式基础知识">
 <meta property="og:url" content="http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="絶望した">
-<meta property="og:description" content="视频格式基础知识封装格式 封装格式 包含视频、音频、章节、字幕等 轨道 MKV与MP4 MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持 MP4兼容性好于MKV MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式 MP4权威机构研发，工业标准，代替MPG 过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG   视频格式 H.264(8b">
+<meta property="og:description" content="视频格式基础知识封装格式 封装格式 包含视频、音频、章节、字幕等 轨道 MKV与MP4 MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持 MP4兼容性好于MKV MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式 MP4权威机构研发，工业标准，代替MPG 过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG   视频格式 H.264(8bit&#x2F;10bit)&#x3D;AVC&#x3D;AVC1 H.265(">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-28T13:55:33.787Z">
 <meta property="article:modified_time" content="2025-07-28T13:58:12.464Z">
@@ -65,7 +65,119 @@
 		</script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 	
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -169,18 +281,18 @@
 <li>包含视频、音频、章节、字幕等</li>
 <li>轨道</li>
 <li>MKV与MP4</li>
-<li>MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持</li>
+<li>MKV可以封装FLAC音频和ASS/SSA字幕，MP4不支持</li>
 <li>MP4兼容性好于MKV</li>
-<li>MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式</li>
+<li>MKV民间研发，代替AVI，兼容flac/ass等非工业标准格式</li>
 <li>MP4权威机构研发，工业标准，代替MPG</li>
-<li>过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG</li>
+<li>过时的RMVB/RM/AVI/MPG</li>
 </ul>
 </li>
 <li>视频格式<ul>
-<li>H.264(8bit&#x2F;10bit)&#x3D;AVC&#x3D;AVC1</li>
-<li>H.265(8bit&#x2F;10bit)&#x3D;HEVC</li>
+<li>H.264(8bit/10bit)=AVC=AVC1</li>
+<li>H.265(8bit/10bit)=HEVC</li>
 <li>RealVideo<ul>
-<li>RMVB&#x2F;RM中常使用</li>
+<li>RMVB/RM中常使用</li>
 </ul>
 </li>
 <li>VC-1<ul>
@@ -190,23 +302,23 @@
 </ul>
 </li>
 <li>音频格式<ul>
-<li>FLAC&#x2F;ALAC&#x2F;TrueHD&#x2F;DTS-HD MA</li>
-<li>AAC&#x2F;MP3&#x2F;AC3&#x2F;DTS(Core)</li>
+<li>FLAC/ALAC/TrueHD/DTS-HD MA</li>
+<li>AAC/MP3/AC3/DTS(Core)</li>
 </ul>
 </li>
 </ul>
 <h2 id="基础参数"><a href="#基础参数" class="headerlink" title="基础参数"></a>基础参数</h2><ul>
 <li>分辨率</li>
 <li>帧率<ul>
-<li>24000&#x2F;1001&#x3D;23.976</li>
-<li>30000&#x2F;1001&#x3D;29.970</li>
-<li>60000&#x2F;1001&#x3D;59.940</li>
+<li>24000/1001=23.976</li>
+<li>30000/1001=29.970</li>
+<li>60000/1001=59.940</li>
 <li>25.000</li>
 <li>50.000</li>
 </ul>
 </li>
 <li>码率<ul>
-<li>视频文件体积&#x2F;时间</li>
+<li>视频文件体积/时间</li>
 <li>Kbps、Mbps</li>
 </ul>
 </li>
