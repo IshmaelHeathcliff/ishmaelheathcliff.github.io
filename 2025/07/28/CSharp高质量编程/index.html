@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="CSharp高质量编程语言篇基本语言要素 正确操作字符串 使用默认转型方法 区别对待强制转型与as和is TryParse比Parse好 使用int？确保值类型可为null 区别readonly与const 枚举使用默认值0 避免给枚举类型元素提供显式的值 重载运算符 创建对象考虑实现比较器 区别对待 &#x3D;&#x3D; 与 Equals 重写Equals时也要重写GetHashCode 输出格式化字符串 正确">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp高质量编程">
+<meta property="og:url" content="http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="絶望した">
+<meta property="og:description" content="CSharp高质量编程语言篇基本语言要素 正确操作字符串 使用默认转型方法 区别对待强制转型与as和is TryParse比Parse好 使用int？确保值类型可为null 区别readonly与const 枚举使用默认值0 避免给枚举类型元素提供显式的值 重载运算符 创建对象考虑实现比较器 区别对待 &#x3D;&#x3D; 与 Equals 重写Equals时也要重写GetHashCode 输出格式化字符串 正确">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-28T13:55:33.804Z">
+<meta property="article:modified_time" content="2025-07-28T14:03:05.280Z">
+<meta property="article:author" content="Ishamel Heathcliff">
+<meta property="article:tag" content="CSharp">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>CSharp高质量编程</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/28/HiFi%E7%9B%B8%E5%85%B3%E6%80%9D%E8%80%83%E3%80%81%E6%80%BB%E7%BB%93%E4%B8%8E%E7%96%91%E9%97%AE/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&text=CSharp高质量编程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&is_video=false&description=CSharp高质量编程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSharp高质量编程&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&name=CSharp高质量编程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&t=CSharp高质量编程"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">CSharp高质量编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E7%AF%87"><span class="toc-number">1.1.</span> <span class="toc-text">语言篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E8%A8%80%E8%A6%81%E7%B4%A0"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本语言要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%92%8CLINQ"><span class="toc-number">1.1.2.</span> <span class="toc-text">集合和LINQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E3%80%81%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">泛型、委托和事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%92%8C%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.1.4.</span> <span class="toc-text">资源管理和序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8"><span class="toc-number">1.1.5.</span> <span class="toc-text">异常与自定义异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="toc-number">1.1.6.</span> <span class="toc-text">异步、多线程、任务和并行*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E7%AF%87"><span class="toc-number">1.2.</span> <span class="toc-text">架构篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">成员设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">类型设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.3.</span> <span class="toc-text">安全性设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E5%8F%8A%E4%B9%A0%E6%83%AF"><span class="toc-number">1.3.</span> <span class="toc-text">编码规范及习惯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">1.3.1.</span> <span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81"><span class="toc-number">1.3.2.</span> <span class="toc-text">代码整洁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E5%BC%80%E5%8F%91%E8%A1%8C%E4%B8%BA"><span class="toc-number">1.3.3.</span> <span class="toc-text">规范开发行为</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">1.4.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">1.4.1.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.4.2.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8"><span class="toc-number">1.4.3.</span> <span class="toc-text">异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.4.4.</span> <span class="toc-text">关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.5.</span> <span class="toc-text">结构</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        CSharp高质量编程
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Ishamel Heathcliff</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-28T13:55:33.804Z" class="dt-published" itemprop="datePublished">2025-07-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/CSharp/" rel="tag">CSharp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="CSharp高质量编程"><a href="#CSharp高质量编程" class="headerlink" title="CSharp高质量编程"></a>CSharp高质量编程</h1><h2 id="语言篇"><a href="#语言篇" class="headerlink" title="语言篇"></a>语言篇</h2><h3 id="基本语言要素"><a href="#基本语言要素" class="headerlink" title="基本语言要素"></a>基本语言要素</h3><ol>
+<li>正确操作字符串</li>
+<li>使用默认转型方法</li>
+<li>区别对待强制转型与<code>as</code>和<code>is</code></li>
+<li><code>TryParse</code>比<code>Parse</code>好</li>
+<li>使用<code>int？</code>确保值类型可为null</li>
+<li>区别<code>readonly</code>与<code>const</code></li>
+<li>枚举使用默认值0</li>
+<li>避免给枚举类型元素提供显式的值</li>
+<li>重载运算符</li>
+<li>创建对象考虑实现比较器</li>
+<li>区别对待 <code>==</code> 与 <code>Equals</code></li>
+<li>重写Equals时也要重写<code>GetHashCode</code></li>
+<li>输出格式化字符串</li>
+<li>正确实现深浅拷贝</li>
+<li>使用<code>dynamic</code>简化反射</li>
+</ol>
+<h3 id="集合和LINQ"><a href="#集合和LINQ" class="headerlink" title="集合和LINQ"></a>集合和LINQ</h3><ol start="16">
+<li>元素数量可变的情况下不应使用数组</li>
+<li>多数情况下使用<code>foreach</code></li>
+<li><code>foreach</code>不能取代<code>for</code></li>
+<li>使用更有效的对象和集合初始化</li>
+<li>使用泛型集合代替非泛型集合</li>
+<li>选择正确的集合</li>
+<li>确保集合的线程安全</li>
+<li>避免将<code>List&lt;T&gt;</code>作为自定义集合类的基类</li>
+<li>迭代器应该只读</li>
+<li>谨慎集合属性的可写操作</li>
+<li>使用匿名类型存储LINQ查询结果</li>
+<li>在查询中使用Lambda表达式</li>
+<li>延迟求值与主动求值</li>
+<li>区别LINQ查询中的<code>IEnumerable&lt;T&gt;</code>和<code>IQueryable&lt;T&gt;</code></li>
+<li>使用LINQ取代集合中的比较器和迭代器</li>
+<li>在LINQ查询中避免不必要的迭代</li>
+</ol>
+<h3 id="泛型、委托和事件"><a href="#泛型、委托和事件" class="headerlink" title="泛型、委托和事件"></a>泛型、委托和事件</h3><ol start="32">
+<li>总是优先考虑泛型</li>
+<li>避免在泛型类型中声明静态成员</li>
+<li>为泛型参数设定约束</li>
+<li>使用<code>default</code>为泛型类型变量指定初始值</li>
+<li>使用FCl中的委托声明</li>
+<li>使用Lambda表达式代替方法和匿名方法</li>
+<li>小心闭包中的陷阱</li>
+<li>了解委托的实质</li>
+<li>使用<code>event</code>关键字为委托施加保护</li>
+<li>实现标准的事件模型</li>
+<li>使用泛型参数兼容泛型接口的不可变性*</li>
+<li>让接口中的泛型参数支持协变*</li>
+<li>理解委托中的协变*</li>
+<li>为泛型类型参数指定逆变*</li>
+</ol>
+<h3 id="资源管理和序列化"><a href="#资源管理和序列化" class="headerlink" title="资源管理和序列化"></a>资源管理和序列化</h3><ol start="46">
+<li>显示释放资源需继承接口 <code>IDisposable</code></li>
+<li>即使提供了显示释放方法，也应该在终结器中提供隐式清理</li>
+<li><code>Dispose</code>方法应允许被多次调用</li>
+<li>在Dispose模式中应提取一个受保护的虚方法</li>
+<li>在Dispose模式中区别对待托管资源和非托管资源</li>
+<li>具有可释放字段的类型或拥有本机资源的类型应该是可释放的</li>
+<li>及时释放资源</li>
+<li>必要时应将不再使用的对象引用赋值为null</li>
+<li>为无用字段标注不可序列化</li>
+<li>使用定制特性减少可序列化的字段</li>
+<li>使用继承<code>ISerializable</code>接口更灵活地控制序列化过程</li>
+<li>实现<code>ISerializable</code>的子类型应负责父类的序列化</li>
+</ol>
+<h3 id="异常与自定义异常"><a href="#异常与自定义异常" class="headerlink" title="异常与自定义异常"></a>异常与自定义异常</h3><ol start="58">
+<li>用抛出异常代替返回错误代码</li>
+<li>不要在不恰当的场合下引发异常</li>
+<li>重新引发异常时使用Inner Exception</li>
+<li>避免在 <code>finally</code> 内撰写无效代码</li>
+<li>避免嵌套异常</li>
+<li>避免吃掉异常</li>
+<li>为循环增加Tester-Doer模式而不是将try-catch置于循环内</li>
+<li>总是处理未捕获的异常*</li>
+<li>正确捕获多线程中的异常*</li>
+<li>慎用自定义异常*</li>
+<li>从<code>System.Exception</code>或其他常见的基本异常中派生异常</li>
+<li>应使用<code>finally</code>避免资源泄露</li>
+<li>避免在调用栈较低的位置记录异常</li>
+</ol>
+<h3 id="异步、多线程、任务和并行"><a href="#异步、多线程、任务和并行" class="headerlink" title="异步、多线程、任务和并行*"></a>异步、多线程、任务和并行*</h3><ol start="71">
+<li>区分异步和多线程应用场景</li>
+<li>在线程同步中使用信号量</li>
+<li>避免锁定不恰当的同步对象</li>
+<li>警惕线程的IsBackground</li>
+<li>警惕线程不会立即启动</li>
+<li>警惕线程的优先级</li>
+<li>正确停止线程</li>
+<li>应避免线程数量过多</li>
+<li>使用ThreadPool或BackgroundWorker代替Thread</li>
+<li>用Task代替ThreadPool</li>
+<li>使用Parallel简化同步状态下Task的使用</li>
+<li>Parallel简化但不等同于Task默认行为</li>
+<li>小心Parallel中的陷阱</li>
+<li>使用PLINQ</li>
+<li>Task中的异常处理</li>
+<li>Parallel中的异常处理</li>
+<li>区分WPF和WinForm的线程模型</li>
+<li>并行并不总是速度更快</li>
+<li>在并行方法体中谨慎使用锁</li>
+</ol>
+<h2 id="架构篇"><a href="#架构篇" class="headerlink" title="架构篇"></a>架构篇</h2><h3 id="成员设计"><a href="#成员设计" class="headerlink" title="成员设计"></a>成员设计</h3><ol start="90">
+<li>不要为抽象类提供公开的构造方法</li>
+<li>可见字段应该重构为属性</li>
+<li>谨慎将数组或集合作为属性</li>
+<li>构造方法应初始化主要属性和字段</li>
+<li>区别对待<code>override</code>和<code>new</code></li>
+<li>避免在构造方法中调用虚成员</li>
+<li>成员应优先考虑公开基类型或接口</li>
+<li>优先考虑将基类型或接口作为参数传递</li>
+<li>用<code>params</code>减少重复参数</li>
+<li>重写时不应使用子类参数</li>
+<li>静态方法和实例方法没有区别</li>
+<li>使用扩展方法，向现有类型添加方法</li>
+</ol>
+<h3 id="类型设计"><a href="#类型设计" class="headerlink" title="类型设计"></a>类型设计</h3><ol start="102">
+<li>区分接口和抽象类的应用场合</li>
+<li>区分组合和继承的应用场合</li>
+<li>用多态代替条件语句</li>
+<li>使用私有构造函数强化单例</li>
+<li>为静态类添加静态构造函数</li>
+<li>区分静态类和单例</li>
+<li>将类型表示为<code>sealed</code></li>
+<li>谨慎使用嵌套类</li>
+<li>用类来代替<code>enum</code></li>
+<li>避免双向耦合</li>
+<li>将现实世界中的对象抽象为类，将可复用对象圈起来为命名空间</li>
+</ol>
+<h3 id="安全性设计"><a href="#安全性设计" class="headerlink" title="安全性设计"></a>安全性设计</h3><ol start="113">
+<li>声明变量前考虑最大值</li>
+<li>MD5不再安全</li>
+<li>通过HASH来验证文件是够被篡改</li>
+<li>避免用非对称算法加密文件</li>
+<li>使用SSL确保通信中的数据安全</li>
+<li>使用<code>SecureString</code>保存密钥等机密字符串</li>
+<li>不要使用自己的加密算法</li>
+<li>为程序集指定强名称</li>
+<li>为应用程序设定运行权限</li>
+</ol>
+<h2 id="编码规范及习惯"><a href="#编码规范及习惯" class="headerlink" title="编码规范及习惯"></a>编码规范及习惯</h2><h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ol start="122">
+<li>以 <code>&lt;Company&gt;.&lt;Component&gt;</code> 为命名空间命名</li>
+<li>程序集不必与命名空间同名</li>
+<li>考虑在命名空间中使用复数</li>
+<li>避免用FCL的类型名称命名自己的类型</li>
+<li>用名词和名词组给类型命名</li>
+<li>用形容词组给接口命名</li>
+<li>考虑让派生类的名字以基类名字作为后缀</li>
+<li>泛型类型参数要以T作为前缀</li>
+<li>以复数命名枚举类型，以单数命名枚举元素</li>
+<li>用PascalCasing命名公开元素</li>
+<li>考虑用类名作为属性名</li>
+<li>用camelCasing命名私有字段和局部变量</li>
+<li>有条件地使用前缀</li>
+<li>考虑使用肯定性地短语命名布尔属性</li>
+<li>优先使用后缀表示已有类型地新版本</li>
+<li>委托和事件类型应添加上级后缀</li>
+<li>事件和委托变量使用动词或形容词短语命名</li>
+<li>事件处理器命名采用组合方式</li>
+</ol>
+<h3 id="代码整洁"><a href="#代码整洁" class="headerlink" title="代码整洁"></a>代码整洁</h3><ol start="140">
+<li>使用默认的访问修饰符</li>
+<li>不知道该不该用大括号时就用</li>
+<li>总是提供有意义的命名</li>
+<li>方法抽象级别应在同一层次</li>
+<li>一个方法只做一件事</li>
+<li>避免过长的方法和过长的类</li>
+<li>只对外公布必要的操作</li>
+<li>重构多个相关属性为一个类</li>
+<li>不重复代码</li>
+<li>使用表驱动法避免过长的 <code>if</code> 和 <code>switch</code> 分支</li>
+<li>使用匿名方法、lambda表达式代替方法</li>
+<li>使用事件访问器替换公开的事件成员变量</li>
+<li>最少甚至是不要注释</li>
+<li>若抛出异常，则必须要注释</li>
+</ol>
+<h3 id="规范开发行为"><a href="#规范开发行为" class="headerlink" title="规范开发行为"></a>规范开发行为</h3><ol start="154">
+<li>不要过度设计，在敏捷中体会重构的乐趣</li>
+<li>随生产代码一起提交单元测试代码</li>
+<li>利用特性为应用程序提供多个版本</li>
+<li>从写第一个界面开始就进行自动化测试</li>
+</ol>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">IPAddress;</span><br><span class="line"></span><br><span class="line">Object;</span><br><span class="line">    Equals(<span class="built_in">object</span> obj); <span class="comment">// 继承要override，下同</span></span><br><span class="line">    ToString(<span class="built_in">string</span> format);</span><br><span class="line">    ReferenceEquals();</span><br><span class="line">    GetHashCode();</span><br><span class="line">    MenberwiseClone(); <span class="comment">// 返回object类型浅拷贝</span></span><br><span class="line"></span><br><span class="line">Nullable&lt;T&gt;; <span class="comment">// T?</span></span><br><span class="line">  HasValue;</span><br><span class="line">  <span class="built_in">int</span> j = i ?? <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">Type;</span><br><span class="line">    GetMethod(<span class="built_in">string</span> methodName); <span class="comment">// 返回MethodInfo类型</span></span><br><span class="line"></span><br><span class="line">MethodInfo : MethodBase;</span><br><span class="line">    Invoke([<span class="keyword">class</span>], <span class="title">obj</span>[]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 集合</span></span><br><span class="line"><span class="comment">// 图与树在FCL中没有实现</span></span><br><span class="line">List&lt;T&gt;;</span><br><span class="line">Queue&lt;T&gt;;</span><br><span class="line">Stack&lt;T&gt;;</span><br><span class="line">Dictionary&lt;TKey, TValue&gt;;</span><br><span class="line">LinkedList&lt;T&gt;;</span><br><span class="line">LinkedListNode;</span><br><span class="line">HashSet&lt;T&gt;;</span><br><span class="line"><span class="comment">// 有序排列</span></span><br><span class="line">SortedList&lt;T&gt;;</span><br><span class="line">SortedDictionary&lt;TKey, TValue&gt;;</span><br><span class="line">SortedSet&lt;T&gt;;</span><br><span class="line"><span class="comment">// 多线程集合类</span></span><br><span class="line">System.Collections.Concurrent;</span><br><span class="line">ConcurrentBag&lt;T&gt;;</span><br><span class="line">ConcurrentDictionary&lt;TKey, TValue&gt;;</span><br><span class="line">ConcurrentQueue&lt;T&gt;;</span><br><span class="line">ConcurrentStack&lt;T&gt;;</span><br><span class="line"></span><br><span class="line">AutoResetEvent;</span><br><span class="line">Set();</span><br><span class="line">WaitOne();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 委托声明</span></span><br><span class="line">Action&lt;&gt;; <span class="comment">// 没有返回值，有17个重载</span></span><br><span class="line">Func&lt;&gt;;  <span class="comment">// 有返回值，有17个重载</span></span><br><span class="line">Predicate&lt;&gt;; <span class="comment">// 定义条件并判断参数是否符合条件，返回bool值</span></span><br><span class="line">EventHandler;</span><br><span class="line">EventHandler&lt;TEventArgs&gt;;</span><br><span class="line">ThreadStart;</span><br><span class="line">ParameterizedThreadStart;</span><br><span class="line">AsyncCallback;</span><br><span class="line"></span><br><span class="line">SecureString;</span><br></pre></td></tr></table></figure>
+
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">IConvertible;</span><br><span class="line">IComparable;</span><br><span class="line">    CompareTo(); <span class="comment">// 返回-1|0|1</span></span><br><span class="line">IComparer;</span><br><span class="line">    Compare(); <span class="comment">// 有两个形参,返回同上</span></span><br><span class="line">IComparable&lt;T&gt;;</span><br><span class="line">IComparer&lt;T&gt;;</span><br><span class="line">IEquatable&lt;T&gt;;</span><br><span class="line">    Equals(T); <span class="comment">// 从IEquatable&lt;T&gt;实现类型安全</span></span><br><span class="line">IFormattable;</span><br><span class="line">    ToString(<span class="built_in">string</span> format, IFormatProvider formatProvider); <span class="comment">// 从IFormattable实现</span></span><br><span class="line">IFormatProvider;</span><br><span class="line">    GetFormat(Type formatType); <span class="comment">// 从IFormatProvider实现</span></span><br><span class="line">ICustomFormatter;</span><br><span class="line">    Format(<span class="built_in">string</span> format, <span class="built_in">object</span> arg, IFormatProvider formatProvider); <span class="comment">// 从ICustomFormatter实现</span></span><br><span class="line">ICloneable;</span><br><span class="line">    Clone();</span><br><span class="line">ICollection&lt;T&gt;;</span><br><span class="line">  Count;</span><br><span class="line">  Add();</span><br><span class="line">  Clear();</span><br><span class="line">  Contains();</span><br><span class="line">  CopyTo();</span><br><span class="line">  Remove();</span><br><span class="line">IList&lt;T&gt;;</span><br><span class="line">  Item[<span class="built_in">int</span>];</span><br><span class="line">  IndexOf();</span><br><span class="line">  Insert();</span><br><span class="line">  RemoveAt();</span><br><span class="line"></span><br><span class="line">IEnumerator&lt;T&gt;; <span class="comment">// 枚举器?迭代器？</span></span><br><span class="line"></span><br><span class="line">IQueryable&lt;T&gt;;</span><br><span class="line"></span><br><span class="line">IDisposable;</span><br><span class="line"></span><br><span class="line">ISerializable;</span><br><span class="line">    GetObjectData();</span><br></pre></td></tr></table></figure>
+
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">InvalidCastException; <span class="comment">//转型无效</span></span><br><span class="line">NotImplementedException;</span><br><span class="line">RuntimeBinderException;</span><br><span class="line">InvalidOperationException;</span><br><span class="line">ObjectDisposedException;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">operator</span> +();</span><br><span class="line"><span class="built_in">dynamic</span>; <span class="comment">// 类型检查放到运行时</span></span><br><span class="line"><span class="keyword">lock</span> (x) &#123;&#125;</span><br><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span>/<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">where</span> T: ;</span><br><span class="line"><span class="literal">default</span>(T);</span><br><span class="line"><span class="keyword">params</span> <span class="built_in">int</span>[];</span><br><span class="line"><span class="keyword">event</span>; <span class="comment">// 事件委托初始化后在类外只能删减或增添</span></span><br><span class="line"><span class="keyword">out</span>; <span class="comment">// 参数引用声明；泛型协变参数声明</span></span><br><span class="line"><span class="keyword">ref</span>;</span><br><span class="line"><span class="keyword">in</span>;</span><br><span class="line"><span class="keyword">sealed</span>;</span><br><span class="line">checked&#123;&#125;; <span class="comment">// 运算溢出时报错</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义索引</span></span><br><span class="line"><span class="built_in">object</span>[] items = <span class="keyword">new</span> <span class="built_in">object</span>[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">object</span> <span class="keyword">this</span>[<span class="built_in">int</span> i]</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span>&#123; <span class="keyword">return</span> items[i];&#125;</span><br><span class="line"><span class="keyword">set</span>&#123; items[i] = <span class="keyword">value</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">CSharp高质量编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E7%AF%87"><span class="toc-number">1.1.</span> <span class="toc-text">语言篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E8%A8%80%E8%A6%81%E7%B4%A0"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本语言要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%92%8CLINQ"><span class="toc-number">1.1.2.</span> <span class="toc-text">集合和LINQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E3%80%81%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">泛型、委托和事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%92%8C%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.1.4.</span> <span class="toc-text">资源管理和序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8"><span class="toc-number">1.1.5.</span> <span class="toc-text">异常与自定义异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="toc-number">1.1.6.</span> <span class="toc-text">异步、多线程、任务和并行*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E7%AF%87"><span class="toc-number">1.2.</span> <span class="toc-text">架构篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">成员设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">类型设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.3.</span> <span class="toc-text">安全性设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E5%8F%8A%E4%B9%A0%E6%83%AF"><span class="toc-number">1.3.</span> <span class="toc-text">编码规范及习惯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">1.3.1.</span> <span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81"><span class="toc-number">1.3.2.</span> <span class="toc-text">代码整洁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E5%BC%80%E5%8F%91%E8%A1%8C%E4%B8%BA"><span class="toc-number">1.3.3.</span> <span class="toc-text">规范开发行为</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">1.4.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">1.4.1.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.4.2.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8"><span class="toc-number">1.4.3.</span> <span class="toc-text">异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.4.4.</span> <span class="toc-text">关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.5.</span> <span class="toc-text">结构</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&text=CSharp高质量编程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&is_video=false&description=CSharp高质量编程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSharp高质量编程&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&title=CSharp高质量编程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&name=CSharp高质量编程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/CSharp%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A8%8B/&t=CSharp高质量编程"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Ishamel Heathcliff
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

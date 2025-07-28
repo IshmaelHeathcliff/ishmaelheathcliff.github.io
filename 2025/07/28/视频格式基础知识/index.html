@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="视频格式基础知识封装格式 封装格式 包含视频、音频、章节、字幕等 轨道 MKV与MP4 MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持 MP4兼容性好于MKV MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式 MP4权威机构研发，工业标准，代替MPG 过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG   视频格式 H.264(8b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视频格式基础知识">
+<meta property="og:url" content="http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="絶望した">
+<meta property="og:description" content="视频格式基础知识封装格式 封装格式 包含视频、音频、章节、字幕等 轨道 MKV与MP4 MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持 MP4兼容性好于MKV MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式 MP4权威机构研发，工业标准，代替MPG 过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG   视频格式 H.264(8b">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-28T13:55:33.787Z">
+<meta property="article:modified_time" content="2025-07-28T13:58:12.464Z">
+<meta property="article:author" content="Ishamel Heathcliff">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>视频格式基础知识</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/07/28/%E6%A0%87%E7%AD%BE%E7%B3%BB%E7%BB%9F/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/28/Minecraft%E7%BA%A2%E7%9F%B3%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&text=视频格式基础知识"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&is_video=false&description=视频格式基础知识"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=视频格式基础知识&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&name=视频格式基础知识&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&t=视频格式基础知识"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">视频格式基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">封装格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">基础参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">图像表示方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%B2%E6%B7%B1"><span class="toc-number">1.4.</span> <span class="toc-text">色深</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%B2%E5%BA%A6%E5%8D%8A%E9%87%87%E6%A0%B7"><span class="toc-number">1.5.</span> <span class="toc-text">色度半采样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E9%A2%91%E4%B8%8E%E9%AB%98%E9%A2%91"><span class="toc-number">1.6.</span> <span class="toc-text">低频与高频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E9%A2%91%E7%8E%87"><span class="toc-number">1.6.1.</span> <span class="toc-text">空间频率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E9%A2%91%E7%8E%87"><span class="toc-number">1.6.2.</span> <span class="toc-text">时间频率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E6%99%B0%E5%BA%A6%E4%B8%8E%E7%94%BB%E8%B4%A8"><span class="toc-number">1.7.</span> <span class="toc-text">清晰度与画质</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        视频格式基础知识
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Ishamel Heathcliff</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-28T13:55:33.787Z" class="dt-published" itemprop="datePublished">2025-07-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="视频格式基础知识"><a href="#视频格式基础知识" class="headerlink" title="视频格式基础知识"></a>视频格式基础知识</h1><h2 id="封装格式"><a href="#封装格式" class="headerlink" title="封装格式"></a>封装格式</h2><ul>
+<li>封装格式<ul>
+<li>包含视频、音频、章节、字幕等</li>
+<li>轨道</li>
+<li>MKV与MP4</li>
+<li>MKV可以封装FLAC音频和ASS&#x2F;SSA字幕，MP4不支持</li>
+<li>MP4兼容性好于MKV</li>
+<li>MKV民间研发，代替AVI，兼容flac&#x2F;ass等非工业标准格式</li>
+<li>MP4权威机构研发，工业标准，代替MPG</li>
+<li>过时的RMVB&#x2F;RM&#x2F;AVI&#x2F;MPG</li>
+</ul>
+</li>
+<li>视频格式<ul>
+<li>H.264(8bit&#x2F;10bit)&#x3D;AVC&#x3D;AVC1</li>
+<li>H.265(8bit&#x2F;10bit)&#x3D;HEVC</li>
+<li>RealVideo<ul>
+<li>RMVB&#x2F;RM中常使用</li>
+</ul>
+</li>
+<li>VC-1<ul>
+<li>微软主导</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>音频格式<ul>
+<li>FLAC&#x2F;ALAC&#x2F;TrueHD&#x2F;DTS-HD MA</li>
+<li>AAC&#x2F;MP3&#x2F;AC3&#x2F;DTS(Core)</li>
+</ul>
+</li>
+</ul>
+<h2 id="基础参数"><a href="#基础参数" class="headerlink" title="基础参数"></a>基础参数</h2><ul>
+<li>分辨率</li>
+<li>帧率<ul>
+<li>24000&#x2F;1001&#x3D;23.976</li>
+<li>30000&#x2F;1001&#x3D;29.970</li>
+<li>60000&#x2F;1001&#x3D;59.940</li>
+<li>25.000</li>
+<li>50.000</li>
+</ul>
+</li>
+<li>码率<ul>
+<li>视频文件体积&#x2F;时间</li>
+<li>Kbps、Mbps</li>
+</ul>
+</li>
+</ul>
+<h2 id="图像表示方法"><a href="#图像表示方法" class="headerlink" title="图像表示方法"></a>图像表示方法</h2><ul>
+<li>RGB模型<ul>
+<li>PNG、BMP</li>
+</ul>
+</li>
+<li>YUV模型<ul>
+<li>亮度-色度模型(Luma-Chroma, Y-UV)</li>
+<li>YCbCr(亮度-蓝色色度-红色色度)</li>
+<li>JPEG</li>
+<li>几乎所有视频格式</li>
+</ul>
+</li>
+<li>渲染<ul>
+<li>将YUV转换为RGB</li>
+</ul>
+</li>
+</ul>
+<h2 id="色深"><a href="#色深" class="headerlink" title="色深"></a>色深</h2><ul>
+<li>8bit与10bit<ul>
+<li>8bit YUV转换后精度大概为8bit RGB的26%</li>
+<li>10bit YUV转换后大概为8bit RGB的97%</li>
+<li>主要表现在亮度较低的区域</li>
+</ul>
+</li>
+</ul>
+<h2 id="色度半采样"><a href="#色度半采样" class="headerlink" title="色度半采样"></a>色度半采样</h2><ul>
+<li>YUV模型中Y比UV重要<ul>
+<li>Y以全分辨率记录，UV则可能减半甚至四分之一（色度半采样）</li>
+</ul>
+</li>
+<li>yuv420<ul>
+<li>YUV格式</li>
+<li>420采样</li>
+<li>UV半采样</li>
+<li>亮度1920*1080</li>
+<li>色度 960*540</li>
+</ul>
+</li>
+<li>yuv444<ul>
+<li>444采样，满分辨率</li>
+</ul>
+</li>
+<li>片源、蓝光原盘等一般都是420采样</li>
+<li>将420拉伸为444是<strong>伪高清</strong><ul>
+<li>也可用于修复和处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="低频与高频"><a href="#低频与高频" class="headerlink" title="低频与高频"></a>低频与高频</h2><h3 id="空间频率"><a href="#空间频率" class="headerlink" title="空间频率"></a>空间频率</h3><ul>
+<li>空间(spatial)指一帧图片内</li>
+<li>高频指亮度变化迅速的区域</li>
+<li>低频指亮度变化缓慢不明显的区域</li>
+<li>平面<ul>
+<li>低频，亮度几乎没变化</li>
+</ul>
+</li>
+<li>纹理<ul>
+<li>高频，变化频繁，幅度有高有低</li>
+</ul>
+</li>
+<li>线条<ul>
+<li>高频，跳跃式突变</li>
+</ul>
+</li>
+<li>或统称高频为线条，低频为非线条</li>
+<li>除了亮度平面，也适用于色度平面</li>
+<li>“细节”一般指高频信息<ul>
+<li>高频越多，信息量越大，编码运算量越大</li>
+<li>编码器码率空间分配</li>
+<li>对高频部分和低频部分的计算分配</li>
+</ul>
+</li>
+</ul>
+<h3 id="时间频率"><a href="#时间频率" class="headerlink" title="时间频率"></a>时间频率</h3><ul>
+<li>时间(temporal)指帧与帧之间的变换</li>
+<li>动态<ul>
+<li>帧与帧之间的变化强弱、变化频率</li>
+</ul>
+</li>
+<li>动态高，编码运算量大</li>
+<li>人眼对高速变化场景敏感度低<ul>
+<li>动态场景优先度低于静态场景</li>
+<li>编码器码率时间分配</li>
+</ul>
+</li>
+</ul>
+<h2 id="清晰度与画质"><a href="#清晰度与画质" class="headerlink" title="清晰度与画质"></a>清晰度与画质</h2><ul>
+<li>什么是清晰度？<ul>
+<li>分辨率</li>
+<li>不代表清晰度</li>
+<li>决定清晰度的上限</li>
+<li>空间高频信息量</li>
+<li>原生、有效高频信息</li>
+<li><em>适度的</em>人为增加高频信息</li>
+</ul>
+</li>
+<li>什么是画质？<ul>
+<li>空间方面的清晰度</li>
+<li>时间方面的动态效果</li>
+<li>视频画质的决定因素</li>
+<li>片源画质</li>
+<li>BDRip优于TVRip</li>
+<li>播放条件</li>
+<li>播放硬件与软件</li>
+<li>码率</li>
+<li>时间与空间复杂度统称为<strong>编码复杂度</strong></li>
+<li>复杂度高就需要更高的码率</li>
+<li>码率分配效率</li>
+<li>H264优于RealVideo</li>
+<li>10bit优于8bit</li>
+<li>编码器与参数设置</li>
+<li>码率分配效率是对制作者的要求</li>
+<li>编码前预处理</li>
+<li>客观修复</li>
+<li>主观调整</li>
+<li>移除无效高频信息，降噪</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">视频格式基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">封装格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">基础参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">图像表示方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%B2%E6%B7%B1"><span class="toc-number">1.4.</span> <span class="toc-text">色深</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%B2%E5%BA%A6%E5%8D%8A%E9%87%87%E6%A0%B7"><span class="toc-number">1.5.</span> <span class="toc-text">色度半采样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E9%A2%91%E4%B8%8E%E9%AB%98%E9%A2%91"><span class="toc-number">1.6.</span> <span class="toc-text">低频与高频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E9%A2%91%E7%8E%87"><span class="toc-number">1.6.1.</span> <span class="toc-text">空间频率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E9%A2%91%E7%8E%87"><span class="toc-number">1.6.2.</span> <span class="toc-text">时间频率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E6%99%B0%E5%BA%A6%E4%B8%8E%E7%94%BB%E8%B4%A8"><span class="toc-number">1.7.</span> <span class="toc-text">清晰度与画质</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&text=视频格式基础知识"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&is_video=false&description=视频格式基础知识"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=视频格式基础知识&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&title=视频格式基础知识"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&name=视频格式基础知识&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/&t=视频格式基础知识"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Ishamel Heathcliff
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

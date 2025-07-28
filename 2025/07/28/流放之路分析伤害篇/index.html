@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="流放之路分析伤害篇总览$$基础伤害 &#x3D; (基础点伤 + 额外点伤)\times \sum 伤害提高 \times \prod 伤害总增 \times 承受伤害修正$$ $$暴击击中伤害 &#x3D; 基础伤害 \times (1 + 暴击伤害加成) \times 承受伤害修正$$ $$承受伤害修正 &#x3D; 抗性修正&#x2F;物理减免 \times \sum 承受伤害提高 \tim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流放之路分析伤害篇">
+<meta property="og:url" content="http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/index.html">
+<meta property="og:site_name" content="絶望した">
+<meta property="og:description" content="流放之路分析伤害篇总览$$基础伤害 &#x3D; (基础点伤 + 额外点伤)\times \sum 伤害提高 \times \prod 伤害总增 \times 承受伤害修正$$ $$暴击击中伤害 &#x3D; 基础伤害 \times (1 + 暴击伤害加成) \times 承受伤害修正$$ $$承受伤害修正 &#x3D; 抗性修正&#x2F;物理减免 \times \sum 承受伤害提高 \tim">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-28T13:54:13.381Z">
+<meta property="article:modified_time" content="2025-07-28T13:58:03.571Z">
+<meta property="article:author" content="Ishamel Heathcliff">
+<meta property="article:tag" content="游戏分析">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>流放之路分析伤害篇</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/28/%E7%BB%98%E7%94%BB%E4%B8%B4%E6%91%B9/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&text=流放之路分析伤害篇"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&is_video=false&description=流放之路分析伤害篇"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流放之路分析伤害篇&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&name=流放之路分析伤害篇&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&t=流放之路分析伤害篇"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">流放之路分析伤害篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E8%A7%88"><span class="toc-number">1.1.</span> <span class="toc-text">总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E6%9D%A5%E6%BA%90"><span class="toc-number">1.2.</span> <span class="toc-text">伤害来源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BB%E4%B8%AD"><span class="toc-number">1.2.1.</span> <span class="toc-text">击中</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">攻击伤害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E6%9C%AF%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">法术伤害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A1%E8%A6%81%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">次要伤害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%B4%E5%87%BB"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">暴击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9A%B4%E5%87%BB%E6%A3%80%E6%B5%8B"><span class="toc-number">1.2.1.4.1.</span> <span class="toc-text">暴击检测</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.2.</span> <span class="toc-text">持续伤害</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">伤害类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.3.1.</span> <span class="toc-text">物理伤害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.3.2.</span> <span class="toc-text">元素伤害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E6%B2%8C%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.3.3.</span> <span class="toc-text">混沌伤害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.3.4.</span> <span class="toc-text">伤害类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.4.</span> <span class="toc-text">其他关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E8%AE%A1%E7%AE%97%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.5.</span> <span class="toc-text">伤害计算顺序</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        流放之路分析伤害篇
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Ishamel Heathcliff</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-28T13:54:13.381Z" class="dt-published" itemprop="datePublished">2025-07-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%B8%B8%E6%88%8F%E5%88%86%E6%9E%90/" rel="tag">游戏分析</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="流放之路分析伤害篇"><a href="#流放之路分析伤害篇" class="headerlink" title="流放之路分析伤害篇"></a>流放之路分析伤害篇</h1><h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>$$<br>基础伤害 &#x3D; (基础点伤 + 额外点伤)\times \sum 伤害提高 \times \prod 伤害总增 \times 承受伤害修正<br>$$</p>
+<p>$$<br>暴击击中伤害 &#x3D; 基础伤害 \times (1 + 暴击伤害加成) \times 承受伤害修正<br>$$</p>
+<p>$$<br>承受伤害修正 &#x3D; 抗性修正&#x2F;物理减免 \times \sum 承受伤害提高 \times \prod 承受伤害总增<br>$$</p>
+<p>$$<br>击中DPS &#x3D; (基础伤害 \times (1 - 暴击几率) + 暴击击中伤害 \times 暴击几率 )\times 伤害速率<br>$$</p>
+<p>$$<br>持续DPS &#x3D; 基础伤害 \times \sum 持续伤害加成<br>$$</p>
+<p><strong>点伤</strong>是一个有范围的值，实际点伤在最小值和最大值之间随机取得。</p>
+<p><strong>基础点伤</strong>由武器基础点伤或技能基础点伤决定，<strong>额外点伤</strong>可在装备、珠宝的词缀和其他辅助技能等上获取。</p>
+<p><strong>伤害提高</strong>是最容易获取的乘区，但由于所有伤害提高加在一起作为一个乘区，故边际效应递减明显。</p>
+<p>每个<strong>伤害总增</strong>效果都是一个独立的乘区，该效果十分强力，尤其是在后期，但伤害总增效果的获取途径有限，主要是辅助技能宝石和光环等。</p>
+<p>伤害型异常状态只根据<strong>基础伤害</strong>计算。</p>
+<p><strong>暴击击中伤害</strong>只在击中时发生，会有区别于基础伤害的计算方式，如<em>暴击时无视抗性</em>、<em>暴击伤害减少</em>等。单独计算后根据暴击几率相加。</p>
+<p><strong>承受伤害修正</strong>主要是计算敌人的防御，以及应用<strong>承受伤害提高</strong>效果和<strong>承受伤害总增</strong>效果。</p>
+<p>一个技能造成的伤害可能由多种<strong>伤害类型</strong>构成，不同的伤害类型会各自计算并最终相加。</p>
+<h2 id="伤害来源"><a href="#伤害来源" class="headerlink" title="伤害来源"></a>伤害来源</h2><p>伤害来源有四种类型：</p>
+<ul>
+<li><strong>攻击伤害</strong></li>
+<li><strong>法术伤害</strong></li>
+<li><strong>持续伤害</strong></li>
+<li><strong>次要伤害</strong></li>
+</ul>
+<p>伤害来源是唯一的，一个伤害不会有多个来源。但一个技能可能有多个不同伤害来源的伤害。</p>
+<p><strong>攻击</strong>、<strong>法术</strong>、<strong>次要</strong>伤害造成<strong>击中</strong>，击中与持续伤害有着显著的区别。</p>
+<p>通常一个伤害来源的伤害不会获得另一个伤害来源相关的加成。</p>
+<p>但有一些情况可以将一个伤害来源的加成转化为另一个伤害来源的加成。</p>
+<p>如技能<strong>漩涡</strong>造成的持续伤害部分，可以获得法术伤害相关的加成。这些特殊情况会在技能描述上说明。</p>
+<h3 id="击中"><a href="#击中" class="headerlink" title="击中"></a>击中</h3><h4 id="攻击伤害"><a href="#攻击伤害" class="headerlink" title="攻击伤害"></a>攻击伤害</h4><p>攻击伤害在很大程度上与装备的武器相关，近战伤害为攻击伤害的子类，空手伤害为近战伤害的子类。</p>
+<p>攻击伤害的<em>基础点伤</em>与<em>基础暴击几率</em>源于装备的武器。</p>
+<p>攻击伤害在击中敌人时根据<strong>命中</strong>与<strong>闪避</strong>计算是否命中，根据<strong>攻击格挡几率</strong>计算是否被格挡。（详见防御）</p>
+<h4 id="法术伤害"><a href="#法术伤害" class="headerlink" title="法术伤害"></a>法术伤害</h4><p>法术伤害很大程度上与技能本身相关。</p>
+<p>法术伤害的<em>基础点伤</em>与<em>基础暴击几率</em>源于技能。</p>
+<p>法术伤害在击中敌人时根据<strong>法术伤害压制几率</strong>计算是否被压制，根据<strong>法术格挡几率</strong>计算是否被格挡。（详见防御）</p>
+<h4 id="次要伤害"><a href="#次要伤害" class="headerlink" title="次要伤害"></a>次要伤害</h4><p>非攻击、法术、持续伤害来源的其他伤害，有各种形式，如：</p>
+<ul>
+<li>反射伤害</li>
+<li>爆炸伤害</li>
+<li>自伤</li>
+</ul>
+<p>次要伤害无法获得攻击、法术、持续伤害的相关加成，只能获取全局加成和一些特殊机制。</p>
+<h4 id="暴击"><a href="#暴击" class="headerlink" title="暴击"></a>暴击</h4><p>暴击在击中时有几率发生，暴击几率计算为：</p>
+<p>$$<br>暴击几率 &#x3D; （基础暴击几率 + 额外暴击几率）\times (1 + \sum 暴击几率提高)<br>$$</p>
+<p>攻击伤害的基础暴击几率由武器决定，法术伤害的基础暴击几率由技能决定。</p>
+<p>元素伤害在暴击时必定施加对应元素异常状态。</p>
+<p>当攻击伤害通过<strong>暴击检测</strong>，且命中时，对暴击进行额外的闪避检测，这次检测不会影响<strong>闪避熵</strong>（详见防御篇闪避），如果检测失败，该次伤害不会造成暴击。</p>
+<h5 id="暴击检测"><a href="#暴击检测" class="headerlink" title="暴击检测"></a>暴击检测</h5><p>在 0 到 99 之间随机取值，如果该值小于暴击几率则发生暴击。</p>
+<p>对每次击中的每个敌人都会进行暴击检测，因为暴击几率会因为敌人的 Debuff 不同而产生影响。</p>
+<h3 id="持续伤害"><a href="#持续伤害" class="headerlink" title="持续伤害"></a>持续伤害</h3><p>持续伤害有以下常见类型：</p>
+<ul>
+<li>技能持续伤害</li>
+<li>伤害型异常状态<ul>
+<li>流血</li>
+<li>中毒</li>
+<li>点燃</li>
+</ul>
+</li>
+<li>持续伤害 Debuff<ul>
+<li>腐化之血等</li>
+</ul>
+</li>
+<li>地面持续伤害<ul>
+<li>燃烧地面等</li>
+</ul>
+</li>
+</ul>
+<p>持续伤害无法击中。</p>
+<p>持续伤害无法被<strong>护甲</strong>和<strong>闪避</strong>所减免。</p>
+<p>持续伤害类似 Debuff，通常有生效最大层数，且大多为 1。同样的持续伤害可以同时施加在一个对象上，但只有伤害最高的那些生效。同一技能的持续伤害或同一种伤害性异常状态视为同样的持续伤害，不同技能的持续伤害视为不同的持续伤害。</p>
+<p>持续伤害不会暴击，无法得到暴击的加成，伤害性异常状态也只根据<strong>基础伤害</strong>计算。</p>
+<p>持续伤害有一个特殊的伤害乘区：<strong>持续伤害加成</strong>，所有的持续伤害加成会相加计算为一个乘区。</p>
+<h2 id="伤害类型"><a href="#伤害类型" class="headerlink" title="伤害类型"></a>伤害类型</h2><p>伤害类型有如下：</p>
+<ul>
+<li>物理伤害</li>
+<li>元素伤害<ul>
+<li>火焰伤害</li>
+<li>冰霜伤害</li>
+<li>闪电伤害</li>
+</ul>
+</li>
+<li>混沌伤害</li>
+</ul>
+<h3 id="物理伤害"><a href="#物理伤害" class="headerlink" title="物理伤害"></a>物理伤害</h3><p>物理伤害的<strong>击中</strong>会被护甲和<strong>额外物理伤害减轻</strong>所减免，最高不超过 90%。</p>
+<p>物理持续伤害，如流血、腐化之血等只被<strong>额外物理伤害减轻</strong>所减免。</p>
+<p>物理伤害大多来源于攻击，少部分来自于法术。</p>
+<p>可以通过<strong>压制物理伤害减免</strong>来减少敌人的物理减免，最低为零。</p>
+<p>物理击中伤害有几率施加<strong>穿刺</strong>，用来放大物理击中伤害，并弥补压制物理减免相对于元素抗性减少的劣势。</p>
+<p><strong>穿刺</strong>是一个 Debuff，会记录物理击中伤害的 10%，并在接下来的 5次击中中施加伤害，Debuff 持续时间为 8 秒。</p>
+<h3 id="元素伤害"><a href="#元素伤害" class="headerlink" title="元素伤害"></a>元素伤害</h3><p>元素伤害会被相应的元素抗性所减免。</p>
+<p>可以通过<strong>抗性穿透</strong>和<strong>抗性减少</strong>来降低敌人的元素伤害减免。</p>
+<p><strong>抗性减少</strong>可以通过施加诅咒、曝露、异常状态等 Debuff 的方式获得，降低敌人的<strong>实际元素抗性</strong>。</p>
+<p><strong>抗性穿透</strong>在<strong>击中</strong>时发生，降低敌人的<strong>有效元素抗性</strong>。</p>
+<p>元素抗性可以降到 0 以下以获得伤害放大。</p>
+<h3 id="混沌伤害"><a href="#混沌伤害" class="headerlink" title="混沌伤害"></a>混沌伤害</h3><p>混沌伤害会被混沌抗性所减免，与元素抗性的机制一致。</p>
+<p>混沌伤害的特点是忽视<strong>护盾</strong>，直接减少生命。</p>
+<p>敌人的混沌伤害来源并不多，但由于混沌抗性的获取较少，后期如果不刻意获取，混沌伤害的短板会特别突出。</p>
+<h3 id="伤害类型转换"><a href="#伤害类型转换" class="headerlink" title="伤害类型转换"></a>伤害类型转换</h3><p>伤害类型可以进行转换，转换后的伤害可以同时获取转换前后伤害类型的伤害加成，但对多种伤害类型同时生效的伤害加成不会重复生效。</p>
+<p>伤害类型转换只作用于击中。</p>
+<p>伤害类型转换具有一定的方向，物理 -&gt; 闪电 -&gt; 冰霜 -&gt; 火焰 -&gt; 混沌。</p>
+<p>转换可以跳过中间类型，但不能逆向转换。</p>
+<p>除了伤害转换，还有<strong>获得额外伤害</strong>。</p>
+<p><strong>获得额外伤害</strong>可以获得等同于某类型伤害一定百分比的额外另一类型伤害，与伤害转换具有相同的机制和方向，但不会减少原类型的伤害。</p>
+<h2 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h2><p>除了以上伤害来源和伤害类型，伤害还可以分类为许多不同的关键字，如：</p>
+<ul>
+<li>效果区域</li>
+<li>元素</li>
+<li>地雷</li>
+<li>召唤物</li>
+<li>投射物</li>
+<li>图腾</li>
+<li>陷阱</li>
+<li>……</li>
+</ul>
+<p>伤害的关键字，决定了该伤害能获得的伤害加成。</p>
+<p>全局伤害加成可以作用于所有的伤害。</p>
+<h2 id="伤害计算顺序"><a href="#伤害计算顺序" class="headerlink" title="伤害计算顺序"></a>伤害计算顺序</h2><ol>
+<li>基础点伤和额外点伤</li>
+<li>伤害转换和获得额外伤害</li>
+<li>伤害提高与减少、伤害总增与总降</li>
+<li>暴击检定与暴击额外伤害</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">流放之路分析伤害篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E8%A7%88"><span class="toc-number">1.1.</span> <span class="toc-text">总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E6%9D%A5%E6%BA%90"><span class="toc-number">1.2.</span> <span class="toc-text">伤害来源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BB%E4%B8%AD"><span class="toc-number">1.2.1.</span> <span class="toc-text">击中</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">攻击伤害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E6%9C%AF%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">法术伤害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A1%E8%A6%81%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">次要伤害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%B4%E5%87%BB"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">暴击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9A%B4%E5%87%BB%E6%A3%80%E6%B5%8B"><span class="toc-number">1.2.1.4.1.</span> <span class="toc-text">暴击检测</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.2.2.</span> <span class="toc-text">持续伤害</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">伤害类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.3.1.</span> <span class="toc-text">物理伤害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.3.2.</span> <span class="toc-text">元素伤害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E6%B2%8C%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.3.3.</span> <span class="toc-text">混沌伤害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.3.4.</span> <span class="toc-text">伤害类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.4.</span> <span class="toc-text">其他关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E8%AE%A1%E7%AE%97%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.5.</span> <span class="toc-text">伤害计算顺序</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&text=流放之路分析伤害篇"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&is_video=false&description=流放之路分析伤害篇"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流放之路分析伤害篇&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&title=流放之路分析伤害篇"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&name=流放之路分析伤害篇&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/&t=流放之路分析伤害篇"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Ishamel Heathcliff
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="流放之路分析技能篇流放之路的装备具有宝石插槽，具体为衣服和双手武器最多有 6 个插槽，单手武器和盾牌最多有 3 个插槽，头、手、脚各最多有 4 个插槽，项链、戒指、腰带一般没有插槽，但特殊的戒指和腰带可以有插槽。每件装备上的插槽还可以链接起来。 流放之路的技能通过在装备的宝石插槽中镶嵌宝石获得，宝石分为技能宝石和辅助宝石，当技能宝石与辅助宝石的插槽相连时，技能宝石的技能会获得辅助宝石的相应辅助效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流放之路分析技能篇">
+<meta property="og:url" content="http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/index.html">
+<meta property="og:site_name" content="絶望した">
+<meta property="og:description" content="流放之路分析技能篇流放之路的装备具有宝石插槽，具体为衣服和双手武器最多有 6 个插槽，单手武器和盾牌最多有 3 个插槽，头、手、脚各最多有 4 个插槽，项链、戒指、腰带一般没有插槽，但特殊的戒指和腰带可以有插槽。每件装备上的插槽还可以链接起来。 流放之路的技能通过在装备的宝石插槽中镶嵌宝石获得，宝石分为技能宝石和辅助宝石，当技能宝石与辅助宝石的插槽相连时，技能宝石的技能会获得辅助宝石的相应辅助效果">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-28T13:54:13.391Z">
+<meta property="article:modified_time" content="2025-07-28T13:57:57.527Z">
+<meta property="article:author" content="Ishamel Heathcliff">
+<meta property="article:tag" content="游戏分析">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>流放之路分析技能篇</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E4%BC%A4%E5%AE%B3%E7%AF%87/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&text=流放之路分析技能篇"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&is_video=false&description=流放之路分析技能篇"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流放之路分析技能篇&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&name=流放之路分析技能篇&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&t=流放之路分析技能篇"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">流放之路分析技能篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="toc-number">1.1.</span> <span class="toc-text">关键词</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E8%83%BD%E5%AE%9D%E7%9F%B3"><span class="toc-number">1.1.1.</span> <span class="toc-text">技能宝石</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%85%E5%8A%A9%E5%AE%9D%E7%9F%B3"><span class="toc-number">1.1.2.</span> <span class="toc-text">辅助宝石</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        流放之路分析技能篇
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Ishamel Heathcliff</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-28T13:54:13.391Z" class="dt-published" itemprop="datePublished">2025-07-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%B8%B8%E6%88%8F%E5%88%86%E6%9E%90/" rel="tag">游戏分析</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="流放之路分析技能篇"><a href="#流放之路分析技能篇" class="headerlink" title="流放之路分析技能篇"></a>流放之路分析技能篇</h1><p>流放之路的装备具有宝石插槽，具体为衣服和双手武器最多有 6 个插槽，单手武器和盾牌最多有 3 个插槽，头、手、脚各最多有 4 个插槽，项链、戒指、腰带一般没有插槽，但特殊的戒指和腰带可以有插槽。每件装备上的插槽还可以链接起来。</p>
+<p>流放之路的技能通过在装备的宝石插槽中镶嵌宝石获得，宝石分为技能宝石和辅助宝石，当技能宝石与辅助宝石的插槽相连时，技能宝石的技能会获得辅助宝石的相应辅助效果。</p>
+<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><p>技能有各种各样的关键词说明他们能吃到的加成。</p>
+<h3 id="技能宝石"><a href="#技能宝石" class="headerlink" title="技能宝石"></a>技能宝石</h3><ul>
+<li>关键词一览<ul>
+<li>攻击</li>
+<li>近战</li>
+<li>打击：以单体敌人为目标的快速近战攻击</li>
+<li>猛击：以地面为目标的范围近战攻击</li>
+<li>战吼</li>
+<li>法术</li>
+<li>奥术：秘能，arcane，通过额外消耗魔力获得增益的机制</li>
+<li>烙印</li>
+<li>法球：可认为是一种特殊的召唤物</li>
+<li>新星：一种特殊的范围爆发伤害效果</li>
+<li>持续吟唱</li>
+<li>物理</li>
+<li>火焰</li>
+<li>冰霜</li>
+<li>闪电</li>
+<li>混沌</li>
+<li>弓箭</li>
+<li>投射物</li>
+<li>连锁</li>
+<li>虹光：三相，prismatic，随机造成三种元素伤害</li>
+<li>召唤生物</li>
+<li>地雷</li>
+<li>陷阱</li>
+<li>图腾</li>
+<li>魔像</li>
+<li>光环</li>
+<li>捷</li>
+<li>姿态</li>
+<li>护卫</li>
+<li>位移</li>
+<li>旅行</li>
+<li>闪现</li>
+<li>诅咒<ul>
+<li>魔蛊</li>
+<li>印记</li>
+</ul>
+</li>
+<li>效果区域</li>
+<li>暴击</li>
+<li>持续时间</li>
+<li>瓦尔</li>
+<li>反击</li>
+<li>触发</li>
+<li>羁绊</li>
+</ul>
+</li>
+</ul>
+<h3 id="辅助宝石"><a href="#辅助宝石" class="headerlink" title="辅助宝石"></a>辅助宝石</h3><ul>
+<li>关键词一览<ul>
+<li>攻击</li>
+<li>近战</li>
+<li>打击</li>
+<li>猛击</li>
+<li>战吼</li>
+<li>法术</li>
+<li>奥术</li>
+<li>烙印</li>
+<li>持续吟唱</li>
+<li>物理</li>
+<li>火焰</li>
+<li>冰霜</li>
+<li>闪电</li>
+<li>混沌</li>
+<li>弓箭</li>
+<li>投射物</li>
+<li>连锁</li>
+<li>虹光</li>
+<li>召唤生物</li>
+<li>地雷</li>
+<li>陷阱</li>
+<li>图腾</li>
+<li>光环</li>
+<li>位移</li>
+<li>魔蛊</li>
+<li>印记</li>
+<li>辅助</li>
+<li>卓越</li>
+<li>效果区域</li>
+<li>触发</li>
+<li>持续时间</li>
+<li>祝福</li>
+<li>反击</li>
+<li>暴击</li>
+<li>羁绊</li>
+</ul>
+</li>
+</ul>
+<p>辅助宝石特有关键词：</p>
+<ul>
+<li>辅助</li>
+<li>卓越：更强力和稀有的辅助宝石</li>
+<li>祝福：一种特殊的辅助，只能同时拥有一个祝福辅助效果</li>
+</ul>
+<hr>
+<p>技能的关键词可以大致说明该技能能获得的伤害加成类型，具体的伤害加成类型由技能的效果说明决定。</p>
+<p>如<em>元素伤害提高</em>可作用于有火焰、冰霜或闪电关键词的技能所造成的元素伤害。</p>
+<p>大多具有持续伤害的技能都同时有攻击或法术击中伤害，这些技能都有攻击或法术关键词，但除非特殊说明，攻击伤害加成和法术伤害加成仍无法作用于该技能的持续伤害。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">流放之路分析技能篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="toc-number">1.1.</span> <span class="toc-text">关键词</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E8%83%BD%E5%AE%9D%E7%9F%B3"><span class="toc-number">1.1.1.</span> <span class="toc-text">技能宝石</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%85%E5%8A%A9%E5%AE%9D%E7%9F%B3"><span class="toc-number">1.1.2.</span> <span class="toc-text">辅助宝石</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&text=流放之路分析技能篇"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&is_video=false&description=流放之路分析技能篇"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流放之路分析技能篇&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&title=流放之路分析技能篇"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&name=流放之路分析技能篇&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/&t=流放之路分析技能篇"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Ishamel Heathcliff
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

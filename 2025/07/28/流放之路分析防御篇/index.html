@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="流放之路分析防御篇首要防御首要防御是可以从护甲装备基底上直接获取的防御，护甲装备包括头盔、胸甲、手套、鞋子。 护甲护甲可以减少物理伤害击中，减伤比例为： $$减伤比例 &#x3D; \frac{护甲}{护甲 + 5 \times 击中物理伤害}$$ 可见物理击中伤害越高，护甲的减伤越低，故护甲对大额单次物理伤害击中的减伤比较差，而额外物理伤害减少没有这个问题。 护甲提供的物理伤害减伤与额外物理伤害">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流放之路分析防御篇">
+<meta property="og:url" content="http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/index.html">
+<meta property="og:site_name" content="絶望した">
+<meta property="og:description" content="流放之路分析防御篇首要防御首要防御是可以从护甲装备基底上直接获取的防御，护甲装备包括头盔、胸甲、手套、鞋子。 护甲护甲可以减少物理伤害击中，减伤比例为： $$减伤比例 &#x3D; \frac{护甲}{护甲 + 5 \times 击中物理伤害}$$ 可见物理击中伤害越高，护甲的减伤越低，故护甲对大额单次物理伤害击中的减伤比较差，而额外物理伤害减少没有这个问题。 护甲提供的物理伤害减伤与额外物理伤害">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-28T13:54:13.393Z">
+<meta property="article:modified_time" content="2025-07-28T13:57:54.006Z">
+<meta property="article:author" content="Ishamel Heathcliff">
+<meta property="article:tag" content="游戏分析">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>流放之路分析防御篇</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/07/28/%E5%B4%A9%E5%9D%8F%EF%BC%9A%E6%98%9F%E7%A9%B9%E9%93%81%E9%81%93%E5%88%9D%E7%8E%A9%E4%BD%93%E4%BC%9A/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD%E7%AF%87/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&text=流放之路分析防御篇"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&is_video=false&description=流放之路分析防御篇"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流放之路分析防御篇&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&name=流放之路分析防御篇&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&t=流放之路分析防御篇"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">流放之路分析防御篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E8%A6%81%E9%98%B2%E5%BE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">首要防御</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A4%E7%94%B2"><span class="toc-number">1.1.1.</span> <span class="toc-text">护甲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AA%E9%81%BF"><span class="toc-number">1.1.2.</span> <span class="toc-text">闪避</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%BD%E9%87%8F%E6%8A%A4%E7%9B%BE"><span class="toc-number">1.1.3.</span> <span class="toc-text">能量护盾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%85%E8%83%BD"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">充能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%9B%9E%E5%A4%8D%E8%83%BD%E9%87%8F%E6%8A%A4%E7%9B%BE%E6%89%8B%E6%AE%B5"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">其他回复能量护盾手段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">特殊机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E7%95%8C"><span class="toc-number">1.1.4.</span> <span class="toc-text">结界</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E4%B8%8E%E9%AD%94%E5%8A%9B"><span class="toc-number">1.2.</span> <span class="toc-text">生命与魔力</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%B7%E5%8F%96"><span class="toc-number">1.2.1.</span> <span class="toc-text">偷取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%97%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">抗性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E6%8C%A1%E4%B8%8E%E7%9C%A9%E6%99%95"><span class="toc-number">1.4.</span> <span class="toc-text">格挡与眩晕</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E6%9C%AF%E5%8E%8B%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">法术压制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BA%B2%E9%81%BF"><span class="toc-number">1.5.1.</span> <span class="toc-text">躲避</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%8A%B6%E6%80%81%E9%81%BF%E5%85%8D"><span class="toc-number">1.6.</span> <span class="toc-text">异常状态避免</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%8D%E4%BD%8E%E8%AF%85%E5%92%92%E6%95%88%E6%9E%9C"><span class="toc-number">1.7.</span> <span class="toc-text">降低诅咒效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%98%B2%E5%BE%A1%E6%9C%BA%E5%88%B6"><span class="toc-number">1.8.</span> <span class="toc-text">一些防御机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%98%B2%E5%BE%A1"><span class="toc-number">1.8.1.</span> <span class="toc-text">基础防御</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%83%E7%81%B5%E5%8D%87%E5%8D%8E"><span class="toc-number">1.8.2.</span> <span class="toc-text">心灵升华</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E7%81%B5%E4%B9%8B%E4%BD%93"><span class="toc-number">1.8.3.</span> <span class="toc-text">异灵之体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%97%E8%BD%AC%E6%98%9F%E7%A7%BB"><span class="toc-number">1.8.4.</span> <span class="toc-text">斗转星移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E8%BD%AC%E5%85%83%E7%B4%A0"><span class="toc-number">1.8.5.</span> <span class="toc-text">物理转元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BB%E4%B8%AD%E8%BD%AC%E6%8C%81%E7%BB%AD%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.8.6.</span> <span class="toc-text">击中转持续伤害</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1%E8%AE%A1%E7%AE%97%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.9.</span> <span class="toc-text">防御计算顺序</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        流放之路分析防御篇
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Ishamel Heathcliff</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-28T13:54:13.393Z" class="dt-published" itemprop="datePublished">2025-07-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%B8%B8%E6%88%8F%E5%88%86%E6%9E%90/" rel="tag">游戏分析</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="流放之路分析防御篇"><a href="#流放之路分析防御篇" class="headerlink" title="流放之路分析防御篇"></a>流放之路分析防御篇</h1><h2 id="首要防御"><a href="#首要防御" class="headerlink" title="首要防御"></a>首要防御</h2><p>首要防御是可以从护甲装备基底上直接获取的防御，护甲装备包括头盔、胸甲、手套、鞋子。</p>
+<h3 id="护甲"><a href="#护甲" class="headerlink" title="护甲"></a>护甲</h3><p>护甲可以减少<strong>物理伤害击中</strong>，减伤比例为：</p>
+<p>$$<br>减伤比例 &#x3D; \frac{护甲}{护甲 + 5 \times 击中物理伤害}<br>$$</p>
+<p>可见物理击中伤害越高，护甲的减伤越低，故护甲对大额单次物理伤害击中的减伤比较差，而<strong>额外物理伤害减少</strong>没有这个问题。</p>
+<p>护甲提供的物理伤害减伤与<strong>额外物理伤害减少</strong>相加得到最终物理伤害减免，最少 0，最多为 90% 。</p>
+<p>护甲不能对流血、腐化之血等物理持续伤害提供减伤。</p>
+<h3 id="闪避"><a href="#闪避" class="headerlink" title="闪避"></a>闪避</h3><p>闪避可以提供一定几率闪避敌人的攻击伤害（无法闪避法术伤害），攻击者的命中与防御者的闪避共同决定闪避几率：</p>
+<p>$$<br>闪避几率 &#x3D; 1 - \frac{1.25 \times 攻击者的命中}{攻击者的命中 + (0.2 \times 防御者的闪避)^{0.9}}<br>$$</p>
+<p>$$<br>命中率 &#x3D; 1 - 闪避几率<br>$$</p>
+<p>闪避提供的闪避几率与与<strong>额外闪避几率</strong>加在一起作为攻击闪避几率，最小 0，最大 95% 。</p>
+<blockquote>
+<p>[!info] 闪避的计算方式每次闪避并非是独立计算，实体都有一个<strong>闪避熵 (evasion<br>entropy))<strong>，初始为 0 到 100 之间随机取值，每次被攻击都会将</strong>命中率</strong>的值加到闪避熵上，当闪避熵超过 100 时将被击中，并将闪避熵减去 100 。这种计算方式将大大减小闪避的随机，例如闪避率为 80% ，则在连续 5 次攻击中必定会有一次击中。</p>
+</blockquote>
+<p>通过了暴击检测的攻击伤害在命中后会对暴击进行一次额外的闪避检测，该次检测不会影响闪避熵，检测失败时该攻击伤害不会造成暴击伤害。</p>
+<h3 id="能量护盾"><a href="#能量护盾" class="headerlink" title="能量护盾"></a>能量护盾</h3><p>能量护盾在大多时候优先于生命进行伤害抵扣。混沌伤害会忽视能量护盾。</p>
+<p>角色有能量护盾时，有 50% 的几率避免被眩晕。</p>
+<h4 id="充能"><a href="#充能" class="headerlink" title="充能"></a>充能</h4><p>能量护盾默认在角色未受到伤害 2 秒后开始充能。</p>
+<p>充能时受到伤害会打断充能。</p>
+<p>可以通过词缀 <strong>能量护盾充能时间提前 n%</strong> 来减少充能延迟时间，计算方式如下：</p>
+<p>$$<br>充能延迟时间 &#x3D; \frac{200}{100 + n}<br>$$</p>
+<p>例如，提前 100%，则充能延迟时间为 1s；提前 300%，充能延迟时间为 0.5s 。</p>
+<p>默认充能速率为 33.3% 最大能量护盾每秒。</p>
+<h4 id="其他回复能量护盾手段"><a href="#其他回复能量护盾手段" class="headerlink" title="其他回复能量护盾手段"></a>其他回复能量护盾手段</h4><p>有的词缀和天赋也能够使得能量护盾可以获得每秒回复与偷取。</p>
+<h4 id="特殊机制"><a href="#特殊机制" class="headerlink" title="特殊机制"></a>特殊机制</h4><p><strong>异能魔力</strong><br>可以使得能量护盾保护魔力而非生命，使用技能消耗魔力时优先消耗能量护盾，且不会因此打断能量护盾充能</p>
+<h3 id="结界"><a href="#结界" class="headerlink" title="结界"></a>结界</h3><p>结界是一种比较少见的首要防御，主要产出于先祖密藏中掉落的装备。</p>
+<p>受到击中时，优先由结界进行伤害抵扣，随后结界被破坏，进入 4 秒的冷却。之后受到伤害不会打断结界的冷却。</p>
+<p>默认情况下，结界无法应对连续的击中伤害。</p>
+<blockquote>
+<p>[!info] 暗金药剂 <strong>欧罗什的决心</strong></p>
+<p>使用时恢复结界生效期间结界不会破碎生效期间，结界总降 70%</p>
+<p>可以使得结界能够承受连续击中伤害，从而应用于 cwdt。</p>
+</blockquote>
+<h2 id="生命与魔力"><a href="#生命与魔力" class="headerlink" title="生命与魔力"></a>生命与魔力</h2><h3 id="偷取"><a href="#偷取" class="headerlink" title="偷取"></a>偷取</h3><h2 id="抗性"><a href="#抗性" class="headerlink" title="抗性"></a>抗性</h2><h2 id="格挡与眩晕"><a href="#格挡与眩晕" class="headerlink" title="格挡与眩晕"></a>格挡与眩晕</h2><h2 id="法术压制"><a href="#法术压制" class="headerlink" title="法术压制"></a>法术压制</h2><h3 id="躲避"><a href="#躲避" class="headerlink" title="躲避"></a>躲避</h3><h2 id="异常状态避免"><a href="#异常状态避免" class="headerlink" title="异常状态避免"></a>异常状态避免</h2><h2 id="降低诅咒效果"><a href="#降低诅咒效果" class="headerlink" title="降低诅咒效果"></a>降低诅咒效果</h2><h2 id="一些防御机制"><a href="#一些防御机制" class="headerlink" title="一些防御机制"></a>一些防御机制</h2><h3 id="基础防御"><a href="#基础防御" class="headerlink" title="基础防御"></a>基础防御</h3><h3 id="心灵升华"><a href="#心灵升华" class="headerlink" title="心灵升华"></a>心灵升华</h3><h3 id="异灵之体"><a href="#异灵之体" class="headerlink" title="异灵之体"></a>异灵之体</h3><h3 id="斗转星移"><a href="#斗转星移" class="headerlink" title="斗转星移"></a>斗转星移</h3><h3 id="物理转元素"><a href="#物理转元素" class="headerlink" title="物理转元素"></a>物理转元素</h3><h3 id="击中转持续伤害"><a href="#击中转持续伤害" class="headerlink" title="击中转持续伤害"></a>击中转持续伤害</h3><h2 id="防御计算顺序"><a href="#防御计算顺序" class="headerlink" title="防御计算顺序"></a>防御计算顺序</h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">流放之路分析防御篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E8%A6%81%E9%98%B2%E5%BE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">首要防御</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A4%E7%94%B2"><span class="toc-number">1.1.1.</span> <span class="toc-text">护甲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AA%E9%81%BF"><span class="toc-number">1.1.2.</span> <span class="toc-text">闪避</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%BD%E9%87%8F%E6%8A%A4%E7%9B%BE"><span class="toc-number">1.1.3.</span> <span class="toc-text">能量护盾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%85%E8%83%BD"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">充能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%9B%9E%E5%A4%8D%E8%83%BD%E9%87%8F%E6%8A%A4%E7%9B%BE%E6%89%8B%E6%AE%B5"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">其他回复能量护盾手段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">特殊机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E7%95%8C"><span class="toc-number">1.1.4.</span> <span class="toc-text">结界</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E4%B8%8E%E9%AD%94%E5%8A%9B"><span class="toc-number">1.2.</span> <span class="toc-text">生命与魔力</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%B7%E5%8F%96"><span class="toc-number">1.2.1.</span> <span class="toc-text">偷取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%97%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">抗性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E6%8C%A1%E4%B8%8E%E7%9C%A9%E6%99%95"><span class="toc-number">1.4.</span> <span class="toc-text">格挡与眩晕</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E6%9C%AF%E5%8E%8B%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">法术压制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BA%B2%E9%81%BF"><span class="toc-number">1.5.1.</span> <span class="toc-text">躲避</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%8A%B6%E6%80%81%E9%81%BF%E5%85%8D"><span class="toc-number">1.6.</span> <span class="toc-text">异常状态避免</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%8D%E4%BD%8E%E8%AF%85%E5%92%92%E6%95%88%E6%9E%9C"><span class="toc-number">1.7.</span> <span class="toc-text">降低诅咒效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%98%B2%E5%BE%A1%E6%9C%BA%E5%88%B6"><span class="toc-number">1.8.</span> <span class="toc-text">一些防御机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%98%B2%E5%BE%A1"><span class="toc-number">1.8.1.</span> <span class="toc-text">基础防御</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%83%E7%81%B5%E5%8D%87%E5%8D%8E"><span class="toc-number">1.8.2.</span> <span class="toc-text">心灵升华</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E7%81%B5%E4%B9%8B%E4%BD%93"><span class="toc-number">1.8.3.</span> <span class="toc-text">异灵之体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%97%E8%BD%AC%E6%98%9F%E7%A7%BB"><span class="toc-number">1.8.4.</span> <span class="toc-text">斗转星移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E8%BD%AC%E5%85%83%E7%B4%A0"><span class="toc-number">1.8.5.</span> <span class="toc-text">物理转元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BB%E4%B8%AD%E8%BD%AC%E6%8C%81%E7%BB%AD%E4%BC%A4%E5%AE%B3"><span class="toc-number">1.8.6.</span> <span class="toc-text">击中转持续伤害</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1%E8%AE%A1%E7%AE%97%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.9.</span> <span class="toc-text">防御计算顺序</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&text=流放之路分析防御篇"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&is_video=false&description=流放之路分析防御篇"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流放之路分析防御篇&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&title=流放之路分析防御篇"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&name=流放之路分析防御篇&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E5%88%86%E6%9E%90%E9%98%B2%E5%BE%A1%E7%AF%87/&t=流放之路分析防御篇"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Ishamel Heathcliff
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
