@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="从 Unity ScriptableObject 出发谈数据与逻辑分离Unity ScriptableObject 是一个十分强大的工具，兼具数据序列化、Object 实例化、逻辑处理与 Editor GUI 显示。可直接实例化一个 Asset 对象，保存预设数据，并可直接在 Editor GUI 中编辑，还可以拥有逻辑处理方法。Asset 对象可通过多种方式加载到运行时中，成为一个实例对象，如直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 Unity ScriptableObject 出发谈数据与逻辑分离">
+<meta property="og:url" content="http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/index.html">
+<meta property="og:site_name" content="絶望した">
+<meta property="og:description" content="从 Unity ScriptableObject 出发谈数据与逻辑分离Unity ScriptableObject 是一个十分强大的工具，兼具数据序列化、Object 实例化、逻辑处理与 Editor GUI 显示。可直接实例化一个 Asset 对象，保存预设数据，并可直接在 Editor GUI 中编辑，还可以拥有逻辑处理方法。Asset 对象可通过多种方式加载到运行时中，成为一个实例对象，如直">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-28T14:27:35.632Z">
+<meta property="article:modified_time" content="2025-07-28T14:52:49.487Z">
+<meta property="article:author" content="Ishamel Heathcliff">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>从 Unity ScriptableObject 出发谈数据与逻辑分离</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/07/28/%E6%B5%81%E6%94%BE%E4%B9%8B%E8%B7%AF%E4%B8%96%E7%95%8C%E8%AE%BE%E5%AE%9A/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/28/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&text=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&is_video=false&description=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从 Unity ScriptableObject 出发谈数据与逻辑分离&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&name=从 Unity ScriptableObject 出发谈数据与逻辑分离&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&t=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E-Unity-ScriptableObject-%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB"><span class="toc-number">1.</span> <span class="toc-text">从 Unity ScriptableObject 出发谈数据与逻辑分离</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        从 Unity ScriptableObject 出发谈数据与逻辑分离
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Ishamel Heathcliff</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-28T14:27:35.632Z" class="dt-published" itemprop="datePublished">2025-07-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Unity/" rel="tag">Unity</a>, <a class="p-category" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="从-Unity-ScriptableObject-出发谈数据与逻辑分离"><a href="#从-Unity-ScriptableObject-出发谈数据与逻辑分离" class="headerlink" title="从 Unity ScriptableObject 出发谈数据与逻辑分离"></a>从 Unity ScriptableObject 出发谈数据与逻辑分离</h1><p>Unity ScriptableObject 是一个十分强大的工具，兼具数据序列化、Object 实例化、逻辑处理与 Editor GUI 显示。可直接实例化一个 Asset 对象，保存预设数据，并可直接在 Editor GUI 中编辑，还可以拥有逻辑处理方法。Asset 对象可通过多种方式加载到运行时中，成为一个实例对象，如直接引用，Resource、AssetBundle、Addressables 加载等，可以保证对象的唯一性。</p>
+<p>相较之下，如果要使用 JSON 存储数据，则需要有 Editor GUI 处理方法 -&gt; JSON 文件 -&gt; Load 方法 -&gt; 数据对象 -&gt; 实例对象的处理过程，还要确保 Load 方法不会创建多个相同的对象，直接使用 ScriptableObject 可以大大简化该处理流程，而且具有更好的性能优化。</p>
+<p>ScriptableObject 的短板则是只能存储预设静态数据，不能存储运行时动态数据，所以不能处理用户设置、存档等数据。</p>
+<p>尽管 ScriptableObject 有着如此多的优势，但我对其一直是有些抵触的。先从一些次要的原因说起。</p>
+<p>一是 ScriptableObject 是 Unity 独有的数据处理方式，这种方法不够通用，不容易转移。当然后来我意识到，几乎各个游戏引擎都有类似的静态数据处理方式，如 Godot 的 Resource，UE 的 Data Asset 等，也是可以通过一些批处理转移到相应的处理方式的，只是仍然会有一些数据转移的困难，需要 JSON 之类的通用数据来过渡。</p>
+<p>二是将数据分为静态数据和动态数据分别处理，处理方式不统一。动态数据处理是必须的，而只要稍加改造，动态数据的处理方式就能够很好的兼容静态数据，为静态数据处理单独增加复杂度显得累赘。当然，由于静态数据和动态数据的性质不同，静态数据需要在开发阶段频繁直接处理，而动态数据通常为程序生成和加载，不需要开发者直接接触，单独为静态数据设计更好的 Editor GUI 方案也是值得的。如果使用 JSON 等方式存储静态数据，则需要设计额外的 GUI 方法，在复杂度上便没了优势，更何况 ScriptableObject 的集成度很高，并不需要太多额外复杂度就能很好的工作。</p>
+<p>三是外部工具的兼容性，JSON 数据可以很容易的使用一些其他工具来处理，如格式转换、批处理等。使用 Luban 等工具可以让设计师完全独立于 Unity 工作，使用自动化流程将数据自动转换和导入导出。当然也有针对性的可以直接处理 ScriptableObject 的外部工具或者插件，仍然是泛用性和针对性之间的衡量。</p>
+<p>如果以上几点都是各有利弊，还算能接受，那么接下来这点就更值得仔细考量了，那就是数据与逻辑的分离。游戏场景中的实例对象本身是具有一定的序列化静态数据承载能力的，而我们使用 ScriptableObject 的目的，则是将数据与逻辑分离，让同一套逻辑可以处理不同的数据，来实现游戏内容的多样性。但 ScriptableObject 的能力则远远超出了数据容器的职责，我在最开始使用 ScriptableObject 时（我想和大多数初学者一样），很自然的就将 ScriptableObject 当做最终实例化对象来处理，不仅用来承载静态数据，也包含了对象运行逻辑，然后很快就陷入了困惑，同样的逻辑到底应该放在 MonoBehaviour 中，还是 ScriptableObject 中，还是独立的对象类中。如果使用 JSON 数据处理，整个过程是很清晰的，将 JSON 数据加载到 Config 类中，将 Config 类放到对象类中，最终在 MonoBehaviour 中使用该对象类呈现游戏表现逻辑。如果使用 ScriptableObject，初学者则很容易产生困惑，因为 ScriptableObject 可以兼具数据存储、数据加载和对象逻辑，甚至可以处理部分表现逻辑，那么一段逻辑应该放在何处便显得模棱两可，我们的初衷是分离数据与逻辑，结果仍然混淆了数据与逻辑。当然这个问题主要是设计模式和编程规范的问题，实际上逻辑放在何处都不会对最终表现有太多的影响。但如果对代码质量有所追求，如何更好的使用 ScriptableObject 就值得好好考量。显而易见，我们应该参考标准的 JSON 处理方式，将 ScriptableObject 作为 Config 类使用，或者进一步将其作为对象类来使用，而千万不可将游戏表现逻辑放在其中。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E-Unity-ScriptableObject-%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB"><span class="toc-number">1.</span> <span class="toc-text">从 Unity ScriptableObject 出发谈数据与逻辑分离</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&text=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&is_video=false&description=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从 Unity ScriptableObject 出发谈数据与逻辑分离&body=Check out this article: http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&title=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&name=从 Unity ScriptableObject 出发谈数据与逻辑分离&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://ishmaelheathcliff.github.io/2025/07/28/%E4%BB%8E%20Unity%20ScriptableObject%20%E5%87%BA%E5%8F%91%E8%B0%88%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/&t=从 Unity ScriptableObject 出发谈数据与逻辑分离"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Ishamel Heathcliff
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/IshmaelHeathcliff">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
